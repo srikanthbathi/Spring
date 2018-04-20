@@ -1,11 +1,11 @@
-[@Configuration](#@Configuration)
+[@Configuration](#configuration)
 
-[@Bean](#@Bean)
+[@Bean](#bean)
 
-[@Import](#@Import)
+[@Import](#import)
 
 
-## @Configuration 
+## Configuration 
 
 Indicates that the class annotated with configure annotation can be used by spring IOC container as a source to get the bean definitions.
 
@@ -21,13 +21,13 @@ public class AppConfig1{
 }
 
 
-## @Bean
+## Bean
 
 Indicates the spring container that the method annotated with Bean will return the object that can be registerd as a bean in Spring application context.
 
 
 
-## @Import
+## Import
 
 This annotation is use to import bean definitions from another configuration class.
 
