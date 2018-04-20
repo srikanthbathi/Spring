@@ -1,3 +1,6 @@
+[Spring Java config Methods](./JAVACONF.md)
+
+
 https://orga.cat/posts/most-useful-git-commands
 
 **SPRING IOC Container** -- [Inversion of control is nothing but outsourcing the creation, managing and configuring the objects.]
