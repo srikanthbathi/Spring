@@ -1,8 +1,8 @@
-[@Configuration](#@configuration)
+[@Configuration](#@Configuration)
 
-[@Bean](#@bean)
+[@Bean](#@Bean)
 
-[@Import](#@import)
+[@Import](#@Import)
 
 
 ## @Configuration 
@@ -10,6 +10,7 @@
 Indicates that the class annotated with configure annotation can be used by spring IOC container as a source to get the bean definitions.
 
 @Configuration
+
 public class AppConfig1{
 
     @Bean  
