@@ -9,6 +9,16 @@
 
 Indicates that the class annotated with configure annotation can be used by spring IOC container as a source to get the bean definitions.
 
+@Configuration
+public class AppConfig1{
+
+    @Bean  
+    public getAddress(){
+    return new Address();
+    }
+    ...
+}
+
 
 ## @Bean
 
@@ -22,15 +32,7 @@ This annotation is use to import bean definitions from another configuration cla
 
 **Example**
 
-@Configuration
-public class AppConfig1{
 
-    @Bean  
-    public getAddress(){
-    return new Address();
-    }
-    ...
-}
 
 
 @Configuration
