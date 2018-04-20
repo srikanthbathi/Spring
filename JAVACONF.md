@@ -29,5 +29,7 @@ return propertySourcesPlaceholderConfigurer;
 
 Here we have created the location to search for the property file using class path
 
-## AnnotationConfigApplicationContext
+## AnnotationConfigApplicationContext - 
+
+Java annotaion based context loader for loading the beans.
 
