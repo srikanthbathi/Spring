@@ -19,8 +19,13 @@
     <groupId>javax.servlet</groupId>
     <artifactId>javax.servlet-api</artifactId>
     <version>3.0.1</version>
+    <scope>provided</scope>
     </dependency>
-    
+    <dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
     <!-- Spring web mvc dependencies !-->
     
     <dependency>
@@ -37,5 +42,22 @@
   </dependencies>
   <build>
     <finalName>MicroServices</finalName>
+    <plugins>
+    <plugin>
+				<!-- Provides the application at http://localhost:8080/ using an embedded 
+					Tomcat server with a pre-configured environment referencing the SAP proxy -->
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<port>8081</port>
+					<path>/</path>
+					<systemProperties>
+						<http.proxyHost></http.proxyHost>
+						<http.proxyPort></http.proxyPort>
+					</systemProperties>
+				</configuration>
+			</plugin>
+    </plugins>
   </build>
 </project>

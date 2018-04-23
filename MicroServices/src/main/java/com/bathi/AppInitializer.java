@@ -18,11 +18,10 @@ public class AppInitializer implements  WebApplicationInitializer  {
 		//get the application context
 		AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
 		appContext.register(ContextInitializer.class);
-		
 		DispatcherServlet servlet = new DispatcherServlet(appContext);
-		servletContext.addServlet("dispatcher", servlet).addMapping("/");
+		servletContext.addServlet("dispatcher", servlet).addMapping("/*");
 		
-		servletContext.addListener(new ContextLoaderListener());
+		servletContext.addListener(new ContextLoaderListener(appContext));
 		
 		
 		
