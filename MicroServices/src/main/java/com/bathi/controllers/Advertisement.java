@@ -2,7 +2,10 @@ package com.bathi.controllers;
 
 import java.util.HashMap;
 
+import javax.validation.Valid;
+
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +19,7 @@ import com.bathi.payloads.Advertisements;
 
 @RestController
 @RequestMapping("/hello")
+@Validated
 public class Advertisement {
 
 	private HashMap<Integer, Advertisements> adds = new HashMap<Integer, Advertisements>();
@@ -32,7 +36,7 @@ public class Advertisement {
 	
 	
 	@PostMapping
-	public Integer addAdv(@RequestBody Advertisements add){
+	public Integer addAdv(@RequestBody @Valid Advertisements add){
 		adds.put(adds.size(), add);
 		return adds.size()-1;
 		
