@@ -1,6 +1,12 @@
 package com.bathi.controllers;
 
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.fail;
+import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 import javax.inject.Inject;
 
@@ -47,8 +53,10 @@ public class AdvertisementTest {
 	@Test
 	public void createAdd() throws JsonProcessingException, Exception{
 		mockmvc.perform(buildpostRequest("title")).
-		andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isCreated());
-		
+		andExpect(org.springframework.test.web.servlet.result.MockMvcResultMatchers.status().isCreated())
+		.andExpect(header().string("lovca", is(not(""))))
+        .andExpect(content().contentType(APPLICATION_JSON_UTF8))
+        .andExpect(jsonPath("$.title", is("title")));
 	}
 	
 	
