@@ -10,6 +10,11 @@
 
 [@RestControllerAdvice](#restControllerAdvice)
 
+
+**Steps to enable hibernate validations**. make sure you do add @valid annotation at method level  to do validation for method level arguiments and @Validate at class level.
+
+Finally create a bean of type **MethodValidationPostProcessor** in the web app context.
+
 ## Validated
 
 ## Valid
