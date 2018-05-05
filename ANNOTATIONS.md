@@ -4,6 +4,8 @@
 
 [@Import](#import)
 
+[@RestControllerAdvice](#restControllerAdvice)
+
 
 ## Configuration 
 
@@ -48,6 +50,9 @@ public class AppConfig{
     }
     ...
 }
+
+
+## RestControllerAdvice
 
 
 
