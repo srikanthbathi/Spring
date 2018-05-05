@@ -54,6 +54,8 @@ public class AppConfig{
 
 ## RestControllerAdvice
 
+http://javasampleapproach.com/spring-framework/spring-mvc/use-restcontrolleradvice-new-features-spring-framework-4-3
+
 
 
 
