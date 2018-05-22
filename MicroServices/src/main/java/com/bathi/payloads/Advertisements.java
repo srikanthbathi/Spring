@@ -1,9 +1,9 @@
 package com.bathi.payloads;
 
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.validator.constraints.NotBlank;
+import javax.xml.bind.annotation.*;
 
+@XmlRootElement(name = "Add")
 public class Advertisements {
  @NotBlank
  private String title;
@@ -11,7 +11,7 @@ public class Advertisements {
 public String getTitle() {
 	return title;
 }
-
+@XmlElement
 public void setTitle(String title) {
 	this.title = title;
 }

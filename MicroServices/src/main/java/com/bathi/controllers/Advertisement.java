@@ -30,7 +30,7 @@ public class Advertisement {
 		return adds;
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value="/{id}", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	public Advertisements getAdd(@PathVariable("id") Integer id){
 		return adds.get(id);
 	}
