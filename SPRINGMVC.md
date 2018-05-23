@@ -21,3 +21,11 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-auto-c
 You should only ever add one @SpringBootApplication or @EnableAutoConfiguration annotation. We generally recommend that you add one or the other to your primary @Configuration class only.
 
 
+**Spring Bean Scope for Web**
+Spring Framework new release 4.3 make some Web Improvements. Among that, it simplifies way to implement Bean Scopes (Request, Session and Application scopes) using Annotation: @RequestScope | @SessionScope | @ApplicationScope. They are only valid in the context of a web-aware Application.
+
+http://javasampleapproach.com/spring-framework/spring-bean-scope-annotation-requestscope-sessionscope-applicationscope
+
+
+
+
