@@ -27,5 +27,10 @@ Spring Framework new release 4.3 make some Web Improvements. Among that, it simp
 http://javasampleapproach.com/spring-framework/spring-bean-scope-annotation-requestscope-sessionscope-applicationscope
 
 
+**UriComponentsBuilder**
+Yes, this used for constructing URI. Particularly useful when you want to invoke webservices in your class.
+http://www.baeldung.com/spring-uricomponentsbuilder
+
+
 
 
