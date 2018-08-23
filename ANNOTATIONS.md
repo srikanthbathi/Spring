@@ -10,7 +10,7 @@
 
 [@ExceptionHandler]()
 
-[@Controlleradvice]()
+[@ControllerAdvice](#controllerAdvice)
 
 
 ## Configuration 
@@ -61,6 +61,11 @@ public class AppConfig{
 ## RestControllerAdvice
 
 http://javasampleapproach.com/spring-framework/spring-mvc/use-restcontrolleradvice-new-features-spring-framework-4-3
+
+
+## ControllerAdvice
+
+Is an annotation to handle exceptions globally.
 
 
 
