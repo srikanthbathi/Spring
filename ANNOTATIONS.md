@@ -6,9 +6,9 @@
 
 [@RestControllerAdvice](#restControllerAdvice)
 
-[@ResponseStatus]()
+[@ResponseStatus](#responseStatus)
 
-[@ExceptionHandler]()
+[@ExceptionHandler](#exceptionHandler)
 
 [@ControllerAdvice](#controllerAdvice)
 
@@ -56,6 +56,12 @@ public class AppConfig{
     }
     ...
 }
+
+
+## ResponseStatus
+
+is an annotation used to handle the specific exceptions and sending the custom responses to the client.
+
 
 
 ## RestControllerAdvice
