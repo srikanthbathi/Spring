@@ -45,5 +45,6 @@ The most commonly used ApplicationContext implementations are −
 **WebXmlApplicationContext** − This container loads the XML file with definitions of all beans from within a web application.
 
 --> Post construct.
+--> java.util.TimerTask
 
 
