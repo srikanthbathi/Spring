@@ -52,3 +52,60 @@ The most commonly used ApplicationContext implementations are −
 --> 
 
 
+
+
+3.4.2.1. BeanFactoryAware
+A class which implements the org.springframework.beans.factory.BeanFactoryAware interface is provided with a reference to the BeanFactory that created it, when it is created by that BeanFactory.
+
+public interface BeanFactoryAware {
+   /**
+    * Callback that supplies the owning factory to a bean instance.
+    * <p>Invoked after population of normal bean properties but before an init
+    * callback like InitializingBean's afterPropertiesSet or a custom init-method.
+    * @param beanFactory owning BeanFactory (may not be null).
+    * The bean can immediately call methods on the factory.
+    * @throws BeansException in case of initialization errors
+    * @see BeanInitializationException
+    */
+    void setBeanFactory(BeanFactory beanFactory) throws BeansException;
+}
+This allows beans to manipulate the BeanFactory that created them programmatically, through the org.springframework.beans.factory.BeanFactory interface, or by casting the reference to a known subclass of this which exposes additional functionality. Primarily this would consist of programmatic retrieval of other beans. While there are cases when this capability is useful, it should generally be avoided, since it couples the code to Spring, and does not follow the Inversion of Control style, where collaborators are provided to beans as properties.
+
+3.4.2.2. BeanNameAware
+If a bean implements the org.springframework.beans.factory.BeanNameAware interface and is deployed in a BeanFactory, the BeanFactory will call the bean through this interface to inform the bean of the id it was deployed under. The callback will be Invoked after population of normal bean properties but before an init callback like InitializingBean's afterPropertiesSet or a custom init-method.
+
+
+3.7. Customizing beans with BeanPostProcessors
+A bean post-processor is a java class which implements the org.springframework.beans.factory.config.BeanPostProcessor interface, which consists of two callback methods. When such a class is registered as a post-processor with the BeanFactory, for each bean instance that is created by the BeanFactory, the post-processor will get a callback from the BeanFactory before any initialization methods (afterPropertiesSet and any declared init method) are called, and also afterwords. The post-processor is free to do what it wishes with the bean, including ignoring the callback completely. A bean post-processor will typically check for marker interfaces, or do something such as wrap a bean with a proxy. Some Spring helper classes are implemented as bean post-processors.
+
+It is important to know that a BeanFactory treats bean post-processors slightly differently than an ApplicationContext. An ApplicationContext will automatically detect any beans which are deployed into it which implement the BeanPostProcessor interface, and register them as post-processors, to be then called appropriately by the factory on bean creation. Nothing else needs to be done other than deploying the post-processor in a similar fashion to any other bean. On the other hand, when using plain BeanFactories, bean post-processors have to manually be explicitly registered, with a code sequence such as the following:
+
+ConfigurableBeanFactory bf = new .....;     // create BeanFactory
+   ...                       // now register some beans
+// now register any needed BeanPostProcessors
+MyBeanPostProcessor pp = new MyBeanPostProcessor();
+bf.addBeanPostProcessor(pp);
+
+// now start using the factory
+  ...
+Since this manual registration step is not convenient, and ApplictionContexts are functionally supersets of BeanFactories, it is generally recommended that ApplicationContext variants are used when bean post-processors are needed.
+
+3.8. Customizing bean factories with BeanFactoryPostProcessors
+A bean factory post-processor is a java class which implements the org.springframework.beans.factory.config.BeanFactoryPostProcessor interface. It is executed manually (in the case of the BeanFactory) or automatically (in the case of the ApplicationContext) to apply changes of some sort to an entire BeanFactory, after it has been constructed. Spring includes a number of pre-existing bean factory post-processors, such as PropertyResourceConfigurer and PropertyPlaceHolderConfigurer, both described below, and BeanNameAutoProxyCreator, very useful for wrapping other beans transactionally or with any other kind of proxy, as described later in this manual. The BeanFactoryPostProcessor can be used to add custom editors (as also mentioned in Section 3.9, “Registering additional custom PropertyEditors”).
+
+In a BeanFactory, the process of applying a BeanFactoryPostProcessor is manual, and will be similar to this:
+
+XmlBeanFactory factory = new XmlBeanFactory(new FileSystemResource("beans.xml"));
+// create placeholderconfigurer to bring in some property
+// values from a Properties file
+PropertyPlaceholderConfigurer cfg = new PropertyPlaceholderConfigurer();
+cfg.setLocation(new FileSystemResource("jdbc.properties"));
+// now actually do the replacement
+cfg.postProcessBeanFactory(factory);
+An ApplicationContext will detect any beans which are deployed into it which implement the BeanFactoryPostProcessor interface, and automatically use them as bean factory post-processors, at the appropriate time. Nothing else needs to be done other than deploying these post-processor in a similar fashion to any other bean.
+
+Since this manual step is not convenient, and ApplictionContexts are functionally supersets of BeanFactories, it is generally recommended that ApplicationContext variants are used when bean factory post-processors are needed.
+
+https://docs.spring.io/spring/docs/1.2.x/reference/beans.html
+
+
