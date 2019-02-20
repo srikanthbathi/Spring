@@ -9,6 +9,9 @@ https://howtodoinjava.com/spring-security-tutorial/
 
 https://www.callicoder.com/documenting-spring-rest-apis-using-swagger/
 
+
+**SPRING Event Handling** https://www.javadevjournal.com/spring/spring-events/
+
 **SPRING IOC Container** -- [Inversion of control is nothing but outsourcing the creation, managing and configuring the objects.]
 
 The spring container is the core of Spring framework. This container creates the objects, wire them together and manage their complete life cycle. The Primary function of the IOC Container is to create and manage POJO's by means of DI(Dependency injection) 
